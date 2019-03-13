@@ -20,10 +20,16 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create:data": "node createArticle"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "lorem-ipsum-simple": "^0.0.20",
     "standard": "^12.0.1"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": ["graphql"]
   }
 }

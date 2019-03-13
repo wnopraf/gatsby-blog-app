@@ -23,7 +23,6 @@ function generateArticles (n) {
   }
 
   function generateRandomNumber (limit, min = 10) {
-    const dif = limit - min
     const random = Math.floor(Math.random() * limit)
     return random + limit
   }
