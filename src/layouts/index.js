@@ -2,10 +2,9 @@ import React from 'react'
 
 import Link from 'gatsby-link'
 
-
-const Header = ({webTitle}) => <header>
+const Header = ({ webTitle }) => <header>
   <div>
-    <figure><img src="" alt=""/></figure>
+    <figure><img src='' alt='' /></figure>
     <h1>{webTitle}</h1>
   </div>
 </header>
@@ -16,9 +15,9 @@ const Footer = () => <footer>
   <p>footer recomendations</p>
 </footer>
 
-const Page = ({children}) => <div className="content-layout">
-  <Header webTitle="My first gatsby-react page" />
-  <div className="page-holder">{children()}</div>
+const Page = ({ children }) => <div className='content-layout'>
+  <Header webTitle='My first gatsby-react page' />
+  <div className='page-holder'>{children()}</div>
   <Footer />
 </div>
 

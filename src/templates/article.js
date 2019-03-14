@@ -3,22 +3,18 @@ import Link from 'gatsby-link'
 import Article from '../components/article-data'
 import Buttons from '../components/pagination'
 
-export default ({data,pathContext:{id,pageIndex}}) => {
-    console.log('from article.js-line-6:pageIndex',pageIndex)
-     
-    
-    const pages = data.allJsonJson.edges
-    return (
-        <div>
-            <Article {...data.jsonJson}/>
-            <Buttons pageIndex={pageIndex} pages={pages}/>
-            <Link to="/">Home</Link>
-        </div>
-    )
+export default ({ data, pathContext: { id, pageIndex } }) => {
+  console.log('from article.js-line-6:pageIndex', pageIndex)
+
+  const pages = data.allJsonJson.edges
+  return (
+    <div>
+      <Article {...data.jsonJson} />
+      <Buttons pageIndex={pageIndex} pages={pages} />
+      <Link to='/'>Home</Link>
+    </div>
+  )
 }
-
-
-
 
 export const articles = graphql`query allJsonData ($id:String) {
     allJsonJson(sort:{fields:[date], order:DESC}) {
@@ -28,6 +24,7 @@ export const articles = graphql`query allJsonData ($id:String) {
             date
             title
             content
+            img
           }
         }
     }
@@ -36,5 +33,6 @@ export const articles = graphql`query allJsonData ($id:String) {
     date
     content
     title
+    img
   }
 }`

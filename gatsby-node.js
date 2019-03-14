@@ -23,10 +23,10 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
     console.log('data var', data)
     graphData = data
   } catch (error) {
-    console.log(error)
+    console.log('Error log', error)
   }
   console.log(graphData)
-  
+
   graphData.allJsonJson.edges.forEach((edge, index) => {
     const datePath = new Date(edge.node.date).toLocaleDateString('en-us')
     createPage({

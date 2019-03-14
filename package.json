@@ -21,7 +21,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "create:data": "node createArticle"
+    "create:data": "node createArticle.js"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
@@ -30,6 +30,6 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "globals": ["graphql"]
+    "globals": ["graphql"]
   }
 }

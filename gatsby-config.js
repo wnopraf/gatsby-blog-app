@@ -8,5 +8,11 @@ module.exports = {
       name: `src`,
       path: `${__dirname}/src/data/`
     }
-  }, `gatsby-transformer-json`, `gatsby-plugin-styled-jsx`, `gatsby-plugin-react-helmet`]
+  }, { resolve: `gatsby-transformer-json`,
+    options: {
+      typeName: `json`
+    } },
+  `gatsby-plugin-styled-jsx`,
+  `gatsby-plugin-react-helmet`,
+  `gatsby-transformer-remark`]
 }
