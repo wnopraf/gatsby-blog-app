@@ -1,12 +1,15 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import dateFormat from 'date-format'
 
 export default ({ data }) => {
-  const list = data.allJsonJson.edges.map((elm) => {
-    return <li>
-      <Link to={`article-${new Date(elm.node.date).toLocaleDateString('en-us')}`}>
-        <span className='article-date'>{new Date(elm.node.date).toLocaleDateString()}</span>
-        <h3>{elm.node.title}</h3>
+  const list = data.allMarkdownRemark.edges.map((elm, i) => {
+    const datePath = dateFormat('dd-MM-yyThh:mm:ss', new Date(elm.node.frontmatter.date))
+    return <li key={i}>
+      <Link to={`/article-${datePath}`} exact>
+        <span className='article-date'>{new Date(elm.node.frontmatter.date).toLocaleDateString('en-GB')}</span>
+        <h3 className='title'>{elm.node.headings[0].value}</h3>
+        <p className='excerpt'>{elm.node.excerpt}</p>
       </Link>
     </li>
   })
@@ -14,14 +17,21 @@ export default ({ data }) => {
 }
 
 export const articles = graphql`query allIndexData  {
-    allJsonJson(sort:{fields:[date], order:DESC}) {
-        edges {
-          node {
-            id
-            date
-            title
-            content
-          }
+  allMarkdownRemark(sort: {fields:[frontmatter___date], order: DESC}) {
+    edges {
+      node {
+        headings {
+          value 
         }
+        frontmatter {
+          id
+          date
+        }
+        id
+        html
+        excerpt
+       
+      }
     }
+  }
 }`

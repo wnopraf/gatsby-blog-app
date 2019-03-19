@@ -1,28 +1,27 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-/* export default ({ title, content, date, img }) => {
+export default (props) => {
+  let date, title, content, img
+  if (props.frontmatter) {
+    const { frontmatter } = props
+    date = frontmatter.date
+    content = frontmatter.html
+  } else {
+    date = props.date
+    content = props.content
+    title = props.title
+    img = props.img
+  }
   return (
     <div>
       <div className='article-date'>{new Date(date).toLocaleString()}</div>
-      <h1 className='article-title'>{title}</h1>
-      <p className='article-content'>{content}</p>
-      <div dangerouslySetInnerHTML={{ __html: img }} />
+      {props.frontmatter ? <div className='md-post' dangerouslySetInnerHTML={{ __html: content }} /> : <div className='json-post'>
+        <h1 className='article-title'>{title}</h1>
+        <p className='article-content'>{content}</p>
+        <div dangerouslySetInnerHTML={{ __html: img }} />
+
+      </div> }
+
     </div>
   )
-} */
-
-export default class extends Component {
-  state = { isLoaded: false }
-  componentDidMount () {
-    this.setState({ isLoaded: !this.state.isLoaded })
-  }
-  render () {
-    const { date, title, content, img } = this.props
-    return <div>
-      <div className='article-date'>{new Date(date).toLocaleString()}</div>
-      <h1 className='article-title'>{title}</h1>
-      <p className='article-content'>{content}</p>
-      {this.state.isLoaded && <div dangerouslySetInnerHTML={{ __html: img }} />}
-    </div>
-  }
 }

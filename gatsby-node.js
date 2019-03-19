@@ -1,5 +1,5 @@
 const path = require('path')
-
+const dateFormat = require('date-format')
 exports.createPages = async ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators
   const component = path.resolve(`src/templates/article.js`)
@@ -8,33 +8,41 @@ exports.createPages = async ({ graphql, boundActionCreators }) => {
   try {
     const { data } = await graphql(`
             {
-                allJsonJson(sort:{fields:[date], order:DESC}) {
+              allMarkdownRemark(sort: {fields:[frontmatter___date], order: DESC}) {
                 edges {
                   node {
+                    headings {
+                      value 
+                    }
+                    frontmatter {
+                      id
+                      date
+                    }
                     id
-                    date
-                    title
-                    content
+                    html
+                    excerpt
+                   
                   }
                 }
               }
             }
         `)
     console.log('data var', data)
-    graphData = data
+    graphData = data.allMarkdownRemark.edges
   } catch (error) {
     console.log('Error log', error)
   }
-  console.log(graphData)
+  console.log(graphData.length, 'data lenth')
 
-  graphData.allJsonJson.edges.forEach((edge, index) => {
-    const datePath = new Date(edge.node.date).toLocaleDateString('en-us')
+  graphData.forEach((edge, index) => {
+    const datePath = dateFormat('dd-MM-yyThh:mm:ss', new Date(edge.node.frontmatter.date))
     createPage({
-      path: `/article-${datePath}/`, // required -> intentar modificar para index
+      path: `/article-${datePath}`, // required -> intentar modificar para index
       component: component,
       context: {
-        id: edge.node.id,
-        pageIndex: index
+        id: edge.node.frontmatter.id,
+        pageIndex: index,
+        graphData
 
       }
     })

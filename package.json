@@ -4,12 +4,12 @@
   "version": "1.0.0",
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
+    "date-format": "^2.0.0",
     "gatsby": "^1.9.73",
     "gatsby-link": "^1.6.22",
     "gatsby-plugin-react-helmet": "^1.0.8",
     "gatsby-plugin-styled-jsx": "^1.0.11",
     "gatsby-source-filesystem": "^1.5.5",
-    "gatsby-transformer-json": "^1.0.11",
     "gatsby-transformer-remark": "^1.7.17"
   },
   "keywords": [
@@ -30,6 +30,8 @@
   },
   "standard": {
     "parser": "babel-eslint",
-    "globals": ["graphql"]
+    "globals": [
+      "graphql"
+    ]
   }
 }

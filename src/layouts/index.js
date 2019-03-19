@@ -2,23 +2,60 @@ import React from 'react'
 
 import Link from 'gatsby-link'
 
-const Header = ({ webTitle }) => <header>
-  <div>
-    <figure><img src='' alt='' /></figure>
-    <h1>{webTitle}</h1>
+export default ({ children }) => <div className='layout-page'>
+  <header>
+    <div className='container'>
+      <h1>Gabsby blog app</h1>
+    </div>
+
+  </header>
+  <div className='content-page'>
+    <div className='container'>
+      {children()}
+    </div>
+
   </div>
-</header>
+  <footer>
+    <div className='container'>
+      <h1><a href=''>www.gatsbyjs.org</a></h1>
+    </div>
 
-const Footer = () => <footer>
-  <h3>some footer stuff</h3>
-  <p>footer recomendations</p>
-  <p>footer recomendations</p>
-</footer>
+  </footer>
+  <style global jsx>{`
+    :root {
+      font-size: 16px;
+      font-family: 'Poppins', sans-serif;
+      color: black;
 
-const Page = ({ children }) => <div className='content-layout'>
-  <Header webTitle='My first gatsby-react page' />
-  <div className='page-holder'>{children()}</div>
-  <Footer />
+    }
+    .container {
+      width: 100%;
+      padding: 0 1rem;
+      margin: 0 auto;
+    }
+    @media(min-width: 1000px) {
+      .container {
+        max-width: 960px;
+      }
+    }
+    @media(min-width: 1200px) {
+      .container {
+        max-width: 1060px;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    h1,h2,h3 {
+      font-family: 'Baloo Chettan', cursive;
+      margin: 0;
+      padding: 0;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  `}</style>
 </div>
-
-export default Page
