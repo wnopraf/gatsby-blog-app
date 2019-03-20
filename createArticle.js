@@ -2,7 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const lorem = require('lorem-ipsum-simple').default
 
-function createMD (id, title, content, date, img) {
+function createMD (id, title, content, date, img) {
   const MD = `---
 id: ${id}
 date: ${date}
@@ -10,7 +10,10 @@ date: ${date}
 #${title}
 ${content}
 
-${img}`
+
+<div class="img-wrapper">
+    ${img}
+</div>`
   fs.writeFileSync(path.resolve(`src/data/md`, `source-${id}.md`), MD)
 }
 function generateData (n) {
