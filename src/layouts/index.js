@@ -24,12 +24,13 @@ export default ({ children }) => <div className='layout-page'>
       font-size: 16px;
       font-family: 'Poppins', sans-serif;
       color: black;
-      --color-yellow-primary: rgb(245, 239, 77);
+      --color-yellow-primary: rgb(239, 234, 97);
+       
       --color-yellow-tint-1: rgb(138, 138, 122);
       --color-yellow-tint-2: rgb(246, 247, 221);
       --color-yellow-tint-3: rgb(130, 130, 4);
       --color-yellow-tint-4: rgb(163, 163, 125);
-      --color-violet: rgb(108, 87, 229);
+      --color-violet: rgb(129, 114, 214);
       --color-violet-tint-1: rgb(255, 252, 75);
       --color-violent-tint-2: rgb(145, 137, 192);
     }
